@@ -58,7 +58,7 @@ def get_current_window():
 
 def move_to_window(window_id):
 	subprocess.check_output(
-		('wmctrl -i -a %s' % window_id).split(' '))
+		('wmctrl -ia %s' % window_id).split(' '))
 
 ''' TODO:
 	couldn't find this info, if i could get it then I wouldn't have to set the KDE Task Manager's Sorting Behavior to "Do not sort"
