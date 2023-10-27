@@ -4,21 +4,20 @@ window switcher workaround for KDE Plasma
 
 ### Description
 ```
-This script will move to the next/previous window on the current desktop in the order the
-windows are opened. I was trying to make it move in the order of the KDE Plasma Task Manager
-but I couldn't find a way to get the order of it's window icons via the command line. So for
-now I just set the KDE Task Manager's Sorting Behavior to "Do not sort" (which defaults to
-the order the windows are opened) with:
-*right click Task Manager* > Configure Task Managaer ... > Behavior > Sort > Do no sort
-If anyone knows hows to get the order of the Task Manager please let me know!
+This script will move to the left/right window on the KDE Plasma Task Manager, allowing one to assign a keyboard shortcut to the execution of this script, with the caveat that one must set the KDE Task Manager's Sorting Behavior to "Do not sort" (which defaults to the order the windows are opened).
+
+I was trying to make it move in the order of the KDE Plasma Task Manager itself but I couldn't find a way to get the order of it's window icons via the command line. If anyone knows hows to get the order of the Task Manager please let me know (so we could use "Manual Sort" instead of "Do not sort" :D)!
 
 ```
 
 ### Setup
 ```
-git clone git@github.com:PopeyedLocket/window-switcher-workaround.git
-go to:
-System Settings > Shortcuts > Custom Shortcuts > Edit > New > Global Shortcut > Command/URL
+right click Task Manager > Configure Task Manager ... > Behavior > Sort > Do no sort
+
+open termal and run this command where ever you want to store this script
+git clone git@github.com:LukeDickerson19/window-switcher-workaround.git
+
+open System Settings > Shortcuts > Custom Shortcuts > Edit > New > Global Shortcut > Command/URL
 name it something like "switch window right"
 set the shortcut Trigger to any key combination you want, such as Ctrl + Alt + RightArrow
 set the shortcut Action to: /usr/bin/python3 /path/to/window-switcher-workaround/main.py next
