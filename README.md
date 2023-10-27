@@ -4,9 +4,15 @@ window switcher workaround for KDE Plasma
 
 ### Description
 ```
-This script will move to the left/right window on the KDE Plasma Task Manager, allowing one to assign a keyboard shortcut to the execution of this script, with the caveat that one must set the KDE Task Manager's Sorting Behavior to "Do not sort" (which defaults to the order the windows are opened).
+This script will move to the left/right window on the KDE Plasma Task Manager, allowing
+one to assign a keyboard shortcut to the execution of this script, with the caveat that
+one must set the KDE Task Manager's Sorting Behavior to "Do not sort" (which defaults to
+the order the windows are opened).
 
-I was trying to make it move in the order of the KDE Plasma Task Manager itself but I couldn't find a way to get the order of it's window icons via the command line. If anyone knows hows to get the order of the Task Manager please let me know (so we could use "Manual Sort" instead of "Do not sort" :D)!
+I was trying to make it move in the order of the KDE Plasma Task Manager itself but I
+couldn't find a way to get the order of it's window icons via the command line. If
+anyone knows hows to get the order of the Task Manager please let me know (so we could
+use "Manual Sort" instead of "Do not sort" :D)!
 
 ```
 
