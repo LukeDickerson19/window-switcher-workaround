@@ -23,12 +23,17 @@ right click Task Manager > Configure Task Manager ... > Behavior > Sort > Do no 
 open termal and run this command where ever you want to store this script
 git clone git@github.com:LukeDickerson19/window-switcher-workaround.git
 
-open System Settings > Shortcuts > Custom Shortcuts > Edit > New > Global Shortcut > Command/URL
+open System Settings and go to
+Shortcuts > Custom Shortcuts > Edit > New > Global Shortcut > Command/URL
 name it something like "switch window right"
-set the shortcut Trigger to any key combination you want, such as Ctrl + Alt + RightArrow
-set the shortcut Action to: /usr/bin/python3 /path/to/window-switcher-workaround/main.py next
+set the shortcut Trigger to any key combination you want, such as Meta + RightArrow
+set the shortcut Action to:
+	/usr/bin/python3 /path/to/window-switcher-workaround/main.py next
 create another shortcut with a different trigger and
-set the shortcut Action to: /usr/bin/python3 /path/to/window-switcher-workaround/main.py prev
+set the shortcut Action to:
+	/usr/bin/python3 /path/to/window-switcher-workaround/main.py prev
+if you want to be super organized you can create a group called "window switcher"
+and move these 2 shortcuts inside it
 ```
 
 ### Sources
