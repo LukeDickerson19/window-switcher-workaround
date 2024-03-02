@@ -1,5 +1,5 @@
 # window-switcher-workaround
-window switcher workaround for KDE Plasma
+window switcher workaround for KDE Plasma on Xorg
 
 
 ### Description
@@ -11,8 +11,10 @@ the order the windows are opened).
 
 I was trying to make it move in the order of the KDE Plasma Task Manager itself but I
 couldn't find a way to get the order of it's window icons via the command line. If
-anyone knows hows to get the order of the Task Manager please let me know (so we could
-use "Manual Sort" instead of "Do not sort" :D)!
+anyone knows hows to get it please let me know (so we could use "Manual Sort" instead
+of "Do not sort" :D)!
+
+This script only works on Xorg due to it's dependency on wmctrl.
 
 ```
 
