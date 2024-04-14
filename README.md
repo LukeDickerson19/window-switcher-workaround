@@ -14,7 +14,11 @@ couldn't find a way to get the order of it's window icons via the command line. 
 anyone knows hows to get the order of the Task Manager please let me know (so we could
 use "Manual Sort" instead of "Do not sort" :D)!
 
-UPDATE April 14 2024: added desktop_next and desktop_prev script args for feature to switch desktops.
+
+NOTE: This script only works on Xorg due to it's dependency on wmctrl.
+
+UPDATE April 14 2024: added desktop_next and desktop_prev script args for feature to
+switch desktops as well.
 
 ```
 
