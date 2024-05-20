@@ -6,35 +6,35 @@ import subprocess
 if len(sys.argv) < 2: sys.exit()
 window_direction = 0
 desktop_direction = 0
-if sys.argv[1] == 'next': window_direction = 1
-if sys.argv[1] == 'prev': window_direction = -1
-if sys.argv[1] == 'desktop_next': desktop_direction = 1
-if sys.argv[1] == 'desktop_prev': desktop_direction = -1
+if sys.argv[1] == "next": window_direction = 1
+if sys.argv[1] == "prev": window_direction = -1
+if sys.argv[1] == "desktop_next": desktop_direction = 1
+if sys.argv[1] == "desktop_prev": desktop_direction = -1
 if window_direction == 0 and desktop_direction == 0: sys.exit()
 
 
 def get_command_output(cmd):
 	return subprocess.check_output(
-		cmd.split(' ')).decode("utf-8").strip()
+		cmd.split(" ")).decode("utf-8").strip()
 
 def get_current_desktop():
-	desktop_info = get_command_output('wmctrl -d').splitlines()
+	desktop_info = get_command_output("wmctrl -d").splitlines()
 	num_desktops = len(desktop_info)
 	for d in desktop_info:
-		d_info = list(filter(None, d.split(' ')))
-		if d_info[1] == '*':
+		d_info = list(filter(None, d.split(" ")))
+		if d_info[1] == "*":
 			desktop_id = int(d_info[0])
 			# print(desktop_id)
 			return desktop_id, num_desktops
 
 def get_windows_on_desktop(desktop_id):
-	window_info = get_command_output('wmctrl -l')
+	window_info = get_command_output("wmctrl -l")
 	window_ids = []
 	for w in window_info.splitlines():
-		w_info = list(filter(None, w.split(' ')))
+		w_info = list(filter(None, w.split(" ")))
 		if int(w_info[1]) == desktop_id:
 			w_id = w_info[0]
-			# w_name = ' '.join(w_info[3:])
+			# w_name = " ".join(w_info[3:])
 			# print(w_id, w_name)
 			window_ids.append(w_id)
 			# window_ids[w_id] = w_name
@@ -46,15 +46,15 @@ def get_windows_on_desktop(desktop_id):
 def get_current_window():
 
 	# get current window hex id
-	xprop_info = get_command_output('xprop -root')
+	xprop_info = get_command_output("xprop -root")
 	current_window_id = [line.split()[-1] \
 		for line in xprop_info.splitlines() \
-		if '_NET_ACTIVE_WINDOW(WINDOW)' in line][0]
+		if "_NET_ACTIVE_WINDOW(WINDOW)" in line][0]
 
 	# convert xprop- format for window id to wmctrl format
 	current_window_id = \
 		current_window_id[:2] + \
-		((10 - len(current_window_id))*'0') + \
+		((10 - len(current_window_id))*"0") + \
 		current_window_id[2:]
 
 	# print(current_window_id)
@@ -62,18 +62,31 @@ def get_current_window():
 
 def move_to_window(window_id):
 	subprocess.check_output(
-		('wmctrl -ia %s' % window_id).split(' '))
+		("wmctrl -ia %s" % window_id).split(" "))
 
 ''' TODO:
 	couldn't find this info, if i could, I wouldn't have to set the KDE Task Manager's Sorting Behavior to "Do not sort"
 	*right click Task Manager* > Configure Icons-only Task Managaer ... > Behavior > Sort
+
+	i need to somehow access the state of the the icons only task manager
+
+	command to list all qdbus kwin shortcutNames options
+	qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.shortcutNames
+
+	found these but they didn't work
+
+		qdbus org.kde.kglobalaccel /component/kwin invokeShortcut "Switch Window Left"
+		qdbus org.kde.kglobalaccel /component/kwin invokeShortcut "Switch Window Right"
+		qdbus org.kde.kglobalaccel /component/kwin invokeShortcut "Walk Through Windows (Reverse)"
+		qdbus org.kde.kglobalaccel /component/kwin invokeShortcut "Walk Through Windows"	
+		
 	'''
 def get_task_manager_window_order():
 	pass
 
 def move_to_desktop(new_desktop):
 	subprocess.check_output(
-		('wmctrl -s %s' % new_desktop).split(' '))
+		("wmctrl -s %s" % new_desktop).split(" "))
 
 ''' TODO:
 	couldn't find this info, if i could, this script could work for 
