@@ -108,6 +108,15 @@ if __name__ == "__main__":
 	elif desktop_direction != 0:
 		current_desktop_index, num_desktops = get_current_desktop()
 		new_desktop = current_desktop_index + desktop_direction
-		if 0 <= new_desktop < num_desktops:
-			move_to_desktop(new_desktop)
+
+		# handle wrapping around desktops
+		if new_desktop == -1:
+			new_desktop = num_desktops - 1
+		elif new_desktop == num_desktops:
+			new_desktop = 0
+		move_to_desktop(new_desktop)
+
+		# # disable wrapping around desktops
+		# if 0 <= new_desktop < num_desktops:
+		# 	move_to_desktop(new_desktop)
 
