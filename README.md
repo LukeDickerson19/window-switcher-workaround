@@ -20,6 +20,9 @@ NOTE: This script only works on Xorg due to it's dependency on wmctrl.
 UPDATE April 14 2024: added desktop_next and desktop_prev script args for feature to
 switch desktops as well.
 
+UPDATE Oct 11 2025: made window switching only cycle through current KDE Activity's
+windows on the current desktop.
+
 ```
 
 ### Setup

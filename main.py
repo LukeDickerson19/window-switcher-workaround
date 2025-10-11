@@ -30,14 +30,20 @@ def get_current_desktop():
 def get_windows_on_desktop(desktop_id):
 	window_info = get_command_output("wmctrl -l")
 	window_ids = []
+	current_activity_id = get_command_output("kactivities-cli --current-activity").strip().split()[1]
+	# print(f'current activity id: {current_activity_id}\n')
 	for w in window_info.splitlines():
 		w_info = list(filter(None, w.split(" ")))
 		if int(w_info[1]) == desktop_id:
 			w_id = w_info[0]
-			# w_name = " ".join(w_info[3:])
-			# print(w_id, w_name)
-			window_ids.append(w_id)
-			# window_ids[w_id] = w_name
+			w_activity_id = get_command_output(f"xprop -id {w_id} _KDE_NET_WM_ACTIVITIES").strip().split()[-1].replace('"', '')
+			# print('window id:', w_id, 'activity id:', w_activity_id)
+			if w_activity_id == current_activity_id:
+				# print(f'added window id: {w_id}\n')
+				# w_name = " ".join(w_info[3:])
+				# print(w_id, w_name)
+				window_ids.append(w_id)
+				# window_ids[w_id] = w_name
 	# window_ids = [v for k, v in sorted(window_ids.items(), key=lambda item: item[1])]
 	# window_ids = list(window_ids.values())
 	# for w in window_ids: print(w)
